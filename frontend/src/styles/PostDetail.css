@@ -1,0 +1,274 @@
+.post-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.post-detail-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 2.5rem;
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #667eea;
+  transition: all 0.3s ease;
+  padding: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.close-btn:hover {
+  color: #764ba2;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+  transform: rotate(90deg);
+}
+
+.detail-header {
+  margin-bottom: 2.5rem;
+  border-bottom: 3px solid #f0f0f0;
+  padding-bottom: 1.5rem;
+  animation: fadeInUp 0.5s ease-out 0.1s backwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.detail-header h1 {
+  margin: 0 0 0.75rem 0;
+  font-size: 2.2rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.detail-author {
+  display: block;
+  color: #667eea;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.detail-date {
+  display: block;
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.detail-content {
+  margin-bottom: 2.5rem;
+  line-height: 1.9;
+  color: #333;
+  font-size: 1.05rem;
+  animation: fadeInUp 0.5s ease-out 0.2s backwards;
+}
+
+.detail-content p {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 2px solid #f0f0f0;
+  animation: fadeInUp 0.5s ease-out 0.3s backwards;
+}
+
+.detail-actions .btn-edit,
+.detail-actions .btn-delete {
+  flex: 1;
+  padding: 0.85rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-actions .btn-edit::before,
+.detail-actions .btn-delete::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.detail-actions .btn-edit:hover::before,
+.detail-actions .btn-delete:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.detail-actions .btn-edit {
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.detail-actions .btn-edit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.detail-actions .btn-delete {
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  color: white;
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+.detail-actions .btn-delete:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+/* Scrollbar styling */
+.post-detail-modal::-webkit-scrollbar {
+  width: 8px;
+}
+
+.post-detail-modal::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.post-detail-modal::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  border-radius: 10px;
+}
+
+.post-detail-modal::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2, #667eea);
+}
+
+@media (max-width: 768px) {
+  .post-detail-modal {
+    width: 95%;
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-height: 85vh;
+  }
+
+  .close-btn {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .detail-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .detail-content {
+    font-size: 1rem;
+  }
+
+  .detail-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-detail-modal {
+    width: 98%;
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  .detail-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .detail-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .detail-content {
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .detail-actions {
+    padding-top: 1rem;
+  }
+
+  .detail-actions .btn-edit,
+  .detail-actions .btn-delete {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+}
