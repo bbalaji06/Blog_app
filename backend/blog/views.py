@@ -30,7 +30,7 @@ def getPosts(request):
     return Response(serializer.data)
 
 #Authentication Views
-
+@csrf_exempt
 @api_view(['POST'])
 def signup(request):
     serializer = UserSerializer(data=request.data)
@@ -43,6 +43,7 @@ def signup(request):
         }, status=status.HTTP_201_CREATED)   
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@csrf_exempt
 @api_view(['POST'])
 def login(request):
     username = request.data.get('username')
