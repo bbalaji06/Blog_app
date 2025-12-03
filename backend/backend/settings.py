@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import dj_database_url
+from dotenv import load_dotenv
+load_dotenv()
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,7 +85,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default="postgresql://blog_kxqp_user:r6FSLQjpKgRRfett8asw4zOjGJysSbwf@dpg-d4n85cggjchc73bt7ttg-a.oregon-postgres.render.com/blog_kxqp"),
+    'default': dj_database_url.config(default=os.getenv("DATABASE_URL")),
     
 }
 
